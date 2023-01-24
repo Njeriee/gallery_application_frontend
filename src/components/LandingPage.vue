@@ -15,7 +15,7 @@
       </div>
       <div class="basis-1/2 flex flex-col">
         <div class=" ">
-          <img class="h-5/6 w-4/6" src="@/assets/images/landing_page_img1.jpg" alt="landing_page_img1">
+          <img class="h-5/6 w-4/6 object-cover hidden md:block" src="@/assets/images/landing_page_img1.jpg" alt="landing_page_img1">
         </div>
       </div>
     </div>
