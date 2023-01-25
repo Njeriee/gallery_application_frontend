@@ -62,7 +62,7 @@
             data-mdb-ripple="true"
             data-mdb-ripple-color="light"
           >
-            Sign in
+            Sign up
           </button>
 
           <div
