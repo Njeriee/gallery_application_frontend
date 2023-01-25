@@ -4,8 +4,13 @@ import App from './App.vue'
 import './assets/tailwind.css'
 import store from './store'
 import router from './router'
+import { library } from '@fortawesome/fontawesome-svg-core'
+import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
+import { faTwitter } from '@fortawesome/free-brands-svg-icons'
 
-const app = createApp(App).use(router).use(store)
+library.add(faTwitter)
+
+const app = createApp(App).use(router).use(store).component('font-awesome-icon', FontAwesomeIcon)
 
 app.config.globalProperties.axios=axios
 
