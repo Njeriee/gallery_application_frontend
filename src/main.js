@@ -6,9 +6,9 @@ import store from './store'
 import router from './router'
 import { library } from '@fortawesome/fontawesome-svg-core'
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
-import { faTwitter } from '@fortawesome/free-brands-svg-icons'
+import { faGoogle } from '@fortawesome/free-brands-svg-icons'
 
-library.add(faTwitter)
+library.add(faGoogle)
 
 const app = createApp(App).use(router).use(store).component('font-awesome-icon', FontAwesomeIcon)
 
