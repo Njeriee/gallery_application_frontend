@@ -14,7 +14,7 @@
         <p class="text-center text-amber-500 text-3xl">Welcome.</p>
         <form 
           class="flex flex-col pt-3 md:pt-8"
-          @submit.prevent= "saveUser"
+          @submit.prevent= "onLogin"
         >
           <div class="flex flex-col pt-4">
             <label for="email" class="text-lg">Email</label>
@@ -25,8 +25,8 @@
               placeholder="your@email.com"
               class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 mt-1 leading-tight focus:outline-none focus:shadow-outline"
             />
+            <p class=" animate-bounce md:w-2/4 text-gray-600 my-4 p-2 text-center rounded-md bg-red-100" v-if="errors.email">{{ errors.email }}</p>
           </div>
-
           <div class="flex flex-col pt-4">
             <label for="password" class="text-lg">Password</label>
             <input
@@ -36,10 +36,11 @@
               placeholder="Password"
               class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 mt-1 leading-tight focus:outline-none focus:shadow-outline"
             />
+            <p class="animate-bounce md:w-2/4 text-gray-600 my-2 p-2 text-center rounded-md bg-red-100" v-if="errors.password">{{ errors.password }}</p>
           </div>
 
           <input
-            on-click="saveUser"
+            on-click="onLogin"
             type="submit"
             value="Log In"
             class="bg-amber-500 text-white font-bold text-lg hover:bg-gray-700 p-2 mt-8"
@@ -67,12 +68,30 @@
 </template>
 
 <script setup>
-// import { ref } from 'vue';
+import SignUpValidations from '@/services/signup_validations';
+import { ref, reactive } from 'vue';
 
-// const Email = ref('')
-// const Password = ref('')
-// const user = ref([])
+const Email = ref('')
+const Password = ref('')
+const user = ref([])
+let errors = reactive([])
 
-// const saveUser = () => {user.value.push({UserId : user.value.length + 1, email : Email.value, password : Password.value}),console.log(user)}
-// console.log(user.value)
+
+// functions
+
+function onLogin(){
+  let validations = new SignUpValidations(
+    Email.value,
+    Password.value
+  )
+  errors = validations.checkValidations()
+  if(errors.length){
+        return false
+  }
+  user.value.push({
+    UserId : user.value.length + 1, 
+    email : Email.value, password : 
+    Password.value}),console.log('yessss')
+}
+
 </script>

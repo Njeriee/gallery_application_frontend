@@ -14,36 +14,40 @@
           <p class="text-center text-amber-500 text-3xl">Welcome.</p>
           <form
             class="flex flex-col pt-3 md:pt-8"
-            onsubmit="event.preventDefault();"
+            @submit.prevent= "registerUser"
           >
             <div class="flex flex-col pt-4">
               <label for="email" class="text-lg">Email</label>
               <input
+                v-model.trim="Email"
                 type="email"
                 id="email"
                 placeholder="your@email.com"
                 class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 mt-1 leading-tight focus:outline-none focus:shadow-outline"
               />
+              <p class="animate-bounce md:w-2/4 text-gray-600 my-2 p-2 text-center rounded-md bg-red-100" v-if="errors.email">{{ errors.email }}</p>
             </div>
   
             <div class="flex flex-col pt-4">
               <label for="password" class="text-lg">Password</label>
               <input
+                v-model.trim="Password"
                 type="password"
                 id="password"
                 placeholder="Password"
                 class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 mt-1 leading-tight focus:outline-none focus:shadow-outline"
               />
+              <p class="animate-bounce md:w-2/4 text-gray-600 my-2 p-2 text-center rounded-md bg-red-100" v-if="errors.password">{{ errors.password }}</p>
             </div>
           </form>
           <div class="text-center pt-12 pb-12">
             <div class="flex justify-between items-center mb-6">
             <div class="form-group form-check">
               <input
+                v-model="rememberMe"
                 type="checkbox"
                 class="form-check-input appearance-none h-4 w-4 border border-gray-300 rounded-sm bg-white checked:bg-amber-500 checked:border-amber-500 focus:outline-none transition duration-200 mt-1 align-top bg-no-repeat bg-center bg-contain float-left mr-2 cursor-pointer"
-                id="exampleCheck3"
-                checked
+                id="exampleCheck3"                
               />
               <label class="form-check-label inline-block text-gray-800" for="exampleCheck2"
                 >Remember me</label
@@ -56,7 +60,8 @@
             >
           </div>
                     <!-- Submit button -->
-                    <button
+            <button
+            @click="registerUser"
             type="submit"
             class="inline-block px-7 py-3 bg-amber-500 text-white font-medium text-sm leading-snug uppercase rounded shadow-md hover:bg-black hover:shadow-lg focus:bg-amber-500 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-black active:shadow-lg transition duration-150 ease-in-out w-full"
             data-mdb-ripple="true"
@@ -95,3 +100,35 @@
       </div>
     </div>
 </template>
+
+<script setup>
+import SignUpValidations from '@/services/signup_validations';
+import { SIGNUP_ACTION } from '@/store/store_contraints';
+import { ref, reactive } from 'vue';
+import { useActions} from 'vuex-composition-helpers'
+
+
+const Email = ref('')
+const Password = ref('')
+let errors = reactive([])
+const {signup} = useActions('auth',SIGNUP_ACTION)
+
+
+// functions
+
+function registerUser(){
+  let validations = new SignUpValidations(
+    Email.value,
+    Password.value
+  )
+  errors = validations.checkValidations()
+  if('email' in errors || 'password' in errors){
+        return false
+  }
+  return signup
+
+}
+
+
+
+</script>
