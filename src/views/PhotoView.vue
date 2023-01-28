@@ -1,17 +1,17 @@
 <template>
     <div>
-      <RegistrationPage/>
+      <PhotoPage/>
     </div>
   </template>
   
   <script>
   // @ is an alias to /src
-  import RegistrationPage from '@/components/RegistrationPage.vue'
+  import PhotoPage from '@/components/PhotoPage.vue'
   
   export default {
     name: 'LoginView',
     components: {
-      RegistrationPage
+      PhotoPage
     }
   }
   </script>

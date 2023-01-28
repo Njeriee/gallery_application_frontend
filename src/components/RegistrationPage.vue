@@ -1,5 +1,5 @@
 <template>
-    <div class="w-full flex flex-wrap h-screen bg-amber-50">
+        <div class="w-full flex flex-wrap h-screen bg-amber-50">
       <!-- Login Section -->
       <div class="w-full md:w-1/2 flex flex-col">
         <div
@@ -94,5 +94,4 @@
         />
       </div>
     </div>
-  </template>
-  
+</template>
