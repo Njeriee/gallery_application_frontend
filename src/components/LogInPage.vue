@@ -11,10 +11,10 @@
       <div
         class="flex flex-col justify-center md:justify-start my-auto pt-8 md:pt-0 px-8 md:px-24 lg:px-32"
       >
-        <p class="text-center text-amber-500 text-3xl">Welcome.</p>
+        <p class="text-center text-amber-500 text-3xl">Welcome back.</p>
         <form 
           class="flex flex-col pt-3 md:pt-8"
-          @submit.prevent= "onLogin"
+          @submit.prevent= "loginUser"
         >
           <div class="flex flex-col pt-4">
             <label for="email" class="text-lg">Email</label>
@@ -25,7 +25,7 @@
               placeholder="your@email.com"
               class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 mt-1 leading-tight focus:outline-none focus:shadow-outline"
             />
-            <p class=" animate-bounce md:w-2/4 text-gray-600 my-4 p-2 text-center rounded-md bg-red-100" v-if="errors.email">{{ errors.email }}</p>
+            <p class=" animate-bounce md:w-2/4 text-gray-600 my-4 p-2 text-center rounded-md bg-red-100" v-if="errorMsg == 'Invalid email' " >{{ errorMsg }}</p>
           </div>
           <div class="flex flex-col pt-4">
             <label for="password" class="text-lg">Password</label>
@@ -36,11 +36,11 @@
               placeholder="Password"
               class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 mt-1 leading-tight focus:outline-none focus:shadow-outline"
             />
-            <p class="animate-bounce md:w-2/4 text-gray-600 my-2 p-2 text-center rounded-md bg-red-100" v-if="errors.password">{{ errors.password }}</p>
+            <p class="animate-bounce md:w-2/4 text-gray-600 my-2 p-2 text-center rounded-md bg-red-100" v-if="errorMsg == 'Incorrect password'" >{{ errorMsg }}</p>
           </div>
 
           <input
-            on-click="onLogin"
+            on-click="loginUser"
             type="submit"
             value="Log In"
             class="bg-amber-500 text-white font-bold text-lg hover:bg-gray-700 p-2 mt-8"
@@ -68,30 +68,40 @@
 </template>
 
 <script setup>
-import SignUpValidations from '@/services/signup_validations';
-import { ref, reactive } from 'vue';
+import { ref } from 'vue'
+import {getAuth , signInWithEmailAndPassword} from 'firebase/auth'
+import {useRouter} from 'vue-router'
+
 
 const Email = ref('')
 const Password = ref('')
-const user = ref([])
-let errors = reactive([])
+const router = useRouter()
+let errorMsg = ref()
 
+// login function
+const loginUser = () => {
+  signInWithEmailAndPassword(getAuth(), Email.value, Password.value)
+  .then(() => {
+    console.log('successfully logged in')
+    router.push('/admin')
+  })
+  .catch((error) => {
+    switch(error.code){
+      case 'auth/invalid-email':
+        errorMsg.value =  'Invalid email'
+        break
+      case 'auth/user-not-found':
+        errorMsg.value =  'No account with that email was found'
+        break  
+      case 'auth/wrong-password':
+        errorMsg.value =  'Incorrect password'
+        break  
+      default:
+        errorMsg.value = 'Email or password was incorrect'
+        break   
 
-// functions
-
-function onLogin(){
-  let validations = new SignUpValidations(
-    Email.value,
-    Password.value
-  )
-  errors = validations.checkValidations()
-  if(errors.length){
-        return false
-  }
-  user.value.push({
-    UserId : user.value.length + 1, 
-    email : Email.value, password : 
-    Password.value}),console.log('yessss')
+    }
+  })
 }
 
 </script>
