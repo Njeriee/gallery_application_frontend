@@ -26,15 +26,26 @@ const routes = [
     component: () => import('../views/AdminView.vue')
   },
   {
-    path: '/user',
-    name: 'user',
-    component: () => import('../views/UserPageView.vue')
+    path: '/users/:id', 
+    component: () => import('@/views/UserPageView.vue'),
+    
+    children : [
+      {
+        path: '/albums/:id',
+        name: 'albums',
+        component: () => import('../views/AlbumView.vue'),
+        props: route =>({...route.params, id:parseInt(route.params.id)}),
+        children : [
+          {
+            path: '/photos',
+            name: 'photo',
+            component: () => import('../views/PhotoView.vue')
+          }
+        ]
+      }
+    ]
   },
-  {
-    path: '/photo',
-    name: 'photo',
-    component: () => import('../views/PhotoView.vue')
-  }
+
 ]
 
 const router = createRouter({

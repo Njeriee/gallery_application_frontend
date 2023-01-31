@@ -1,15 +1,20 @@
 <template>
+   <section>
     <div>
       <UserPage/>
     </div>
-  </template>
+    <div>
+      <router-view/>
+    </div>
+  </section>
+</template>
   
   <script>
   // @ is an alias to /src
   import UserPage from '@/components/UserPage.vue'
   
   export default {
-    name: 'LoginView',
+    name: 'UserPageView',
     components: {
       UserPage
     }
