@@ -157,7 +157,7 @@
                                             <td
                                                 class="px-6 py-4 text-sm leading-5 text-gray-500 whitespace-no-wrap border-b border-gray-200">
                                                 <!-- <button>View details</button> -->                                              
-                                                <router-link :to="`/user/${user.id}`">View user</router-link>
+                                                <router-link :to="`/users/${user.id}`">View user</router-link>
                                             </td>
                                         </tr>
                                     </tbody>

@@ -56,7 +56,8 @@ const store = createStore({
     async fetchUser({commit},id) {
       const response = await axios.get(`https://jsonplaceholder.typicode.com/users/${id}`);      
       console.log('hello')
-      commit("setCurrentUsers", response.data)
+      commit("setCurrentUser", response.data)
+      console.log('user fetched')
     },
 
     // fetch current user albums

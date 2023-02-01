@@ -1,37 +1,23 @@
+
 <template>
-    <section class="flex flex-col">
-        
-        <div v-if="user"  class="py-5 md:py-8">
-            <p>{{ user.name }}</p>{{ user }}
-            <h1 class="text-center text-xl md:text-5xl">My Albums</h1></div>
-    {{ route.params.id }}
-        <div class="grid h-screen place-items-center">            
-
-        </div>
-        <div>
-
-            
-        </div>    
-    </section>
+    <!-- <h1>{{ user ? user.name : 'Loading...' }}</h1> -->
+    <p >User ID: {{ user.id }}</p>
+    <p >Email: {{ user.email }}</p>
 </template>
 
 <script setup>
-import { computed, onMounted } from 'vue';
-import { useStore } from "vuex";
-import { useRoute } from 'vue-router';
+import { useStore } from 'vuex';
+import { computed ,defineProps, onBeforeMount } from 'vue';
+// import { ref } from 'vue';
 
-
+const props = defineProps(["id"]);
 const store = useStore()
-const route = useRoute()
-const userId = parseInt(route.params)
-console.log(userId)
 
-// fetch user from the store
-// eslint-disable-next-line
-const user = computed(() => store.dispatch("fetchUser",userId))
+const user = computed(() => store.getters.getCurrentUser )
 
-onMounted(() => {
-   
-    user
-})    
+onBeforeMount(()=>{
+  // fetch user from store
+  store.dispatch('fetchUser',props.id)
+})
+
 </script>
