@@ -4,7 +4,7 @@
     <router-link to="/login">Sign In</router-link> |
     <router-link to="/signup">Sign Up</router-link> |
     <router-link to="/admin">Admin</router-link> |
-    <!-- <router-link to="/users">User</router-link> | -->
+    <!-- <router-link to="/albumcard">albumcard</router-link> | -->
     <!-- <router-link to="/photo">Photo</router-link> |
     <router-link to="/albums">Albums</router-link>  -->
   </nav>

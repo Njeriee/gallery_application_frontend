@@ -8,15 +8,15 @@ const store = createStore({
   state: {
     users : [],
     albums : [],
-    userAlbums : [],
-    currentUser : {}
+    userAlbum : [],
+    currentUser : []
   },
 
   // getters
   getters:{
     getUsers: (state) => state.users,
     getAlbums: (state) => state.albums,
-    getUserAlbums:(state) => state.userAlbums,
+    getUserAlbum:(state) => state.userAlbum,
     getCurrentUser:(state) => state.currentUser
   }, 
 
@@ -33,8 +33,11 @@ const store = createStore({
       state.currentUser = response
     },
     setUserAlbum(state,response){
-      state.userAlbums = response
-    }
+      state.currentUser.album = response      
+    },
+    setUserAlbumPhotos(state,response){
+      state.userAlbum = response
+    },
    
   },
 
@@ -63,8 +66,13 @@ const store = createStore({
     // fetch current user albums
     async fetchUserAlbums({commit},userId) {
       const response = await axios.get(`https://jsonplaceholder.typicode.com/albums?userId=${userId}`);
-      commit("setUserAlbums", response.data)
-    }
+      commit("setUserAlbum", response.data)
+    },
+    async fetchPhotos({commit},albumId) {
+      const response = await axios.get(`https://jsonplaceholder.typicode.com/photos?albumId=${albumId}`)
+      commit("setUserAlbumPhotos", response.data)
+      console.log('photos fetched')
+    },
       
   },
 

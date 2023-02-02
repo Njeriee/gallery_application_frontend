@@ -1,50 +1,39 @@
 <template>
-  <h1>My Albums</h1>
-  <div>
-    <button @click="fetchAlbums(1)">Fetch Albums for User 1</button>
-    <button @click="fetchAlbums(2)">Fetch Albums for User 2</button>
-    <br />
-    <!-- <ul v-if="users.length">
-      <li v-for="user in users" :key="user.id">{{ user }}</li>
-    </ul> -->
-    <ul v-if="albums.length">
-      <li v-for="album in albums" :key="album.id">{{ album.userId }}</li>
-    </ul>
-  </div>
+  <section>
+    {{ photos.length }}
+    <div>
+
+    </div>
+    <div class="grid grid-cols-10 gap-4 p-10">
+      <div v-for="photo in photos" :key="photo.id">
+        <img :src="photo.url" alt="album photos" />
+      </div>
+    </div>
+  </section>
 </template>
 
 <script setup>
-import { computed, onMounted } from "@vue/runtime-core";
-
 import { useStore } from "vuex";
+import { computed, onBeforeMount } from "vue";
+import { useRoute } from "vue-router";
 
+
+const route = useRoute();
 const store = useStore();
 
-// function fetchAlbums() {
-//   let users = store.getters.getUsers;
-//   var userId = [];
-//   var ids;
+const albumId = route.params.id;
+console.log(albumId);
 
-//   for (var i = 0; i < users.length; i++) {
-//     ids = users[i].id;
-//     console.log(ids);
-//     userId[i] = ids
+// const currentUser = computed(() => store.getters.getCurrentUser)
+// const user =  store.getters.getCurrentUser
+// const albumId = user.forEach(album => { album.id });
 
-//   }
-//   console.log("we have the id");
-//   console.log(userId);
-//   store.dispatch("fetchUserAlbums", userId);
-  
-// }
+const photos = computed(() => store.getters.getUserAlbum);
 
-function fetchAlbums(userId){
-    store.dispatch("fetchUserAlbums", userId)
-}
-const albums = computed(() => store.getters.getAlbums);
-
-onMounted(() => {
-  store.dispatch("fetchUsers");
-  // store.dispatch('fetchAlbums')
-  // console.log('albums here111')
+onBeforeMount(() => {
+  // fetch user from store
+  // store.dispatch("fetchUser", props.id);
+  // store.dispatch("fetchUserAlbums", props.id);
+  store.dispatch("fetchPhotos", albumId);
 });
 </script>
