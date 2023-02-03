@@ -1,5 +1,5 @@
 <template>
-     <div class="flex w-screen h-screen">
+     <div class="flex w-screen h-screen overscroll-contain overflow-x-hidden">
             <div class="px-4 py-2 bg-black lg:w-1/4">
                 <svg xmlns="http://www.w3.org/2000/svg" class="inline w-8 h-8 text-white lg:hidden" fill="none"
                     viewBox="0 0 24 24" stroke="currentColor">
