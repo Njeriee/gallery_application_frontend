@@ -115,6 +115,9 @@
                                         <tr>
                                             <th
                                                 class="px-6 py-3 text-xs font-medium leading-4 tracking-wider text-left text-gray-500 uppercase border-b border-gray-200 bg-gray-50">
+                                                Username</th>
+                                                <th
+                                                class="px-6 py-3 text-xs font-medium leading-4 tracking-wider text-left text-gray-500 uppercase border-b border-gray-200 bg-gray-50">
                                                 Name</th>
                                             <th
                                                 class="px-6 py-3 text-xs font-medium leading-4 tracking-wider text-left text-gray-500 uppercase border-b border-gray-200 bg-gray-50">
@@ -138,6 +141,15 @@
                                                             alt="admin dashboard ui">
                                                     </div>
 
+                                                    <div class="ml-4">
+                                                        <div class="text-sm font-medium leading-5 text-gray-900">
+                                                           {{ user.username }}
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </td>
+                                            <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-200">
+                                                <div class="flex items-center">
                                                     <div class="ml-4">
                                                         <div class="text-sm font-medium leading-5 text-gray-900">
                                                            {{ user.name }}

@@ -46,8 +46,13 @@ const routes = [
     // ]
   },
   {
-    path: '/users/:id/albums/:id', 
+    path: '/users/:id/albums/:albumId', 
     component: () => import('../views/AlbumView.vue'),
+    props: true
+  },
+  {
+    path: '/users/:id/albums/:albumId/photos/:id', 
+    component: () => import('../views/PhotoDetailsView.vue'),
     props: true
   },
 

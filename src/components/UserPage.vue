@@ -8,7 +8,8 @@
           alt="User Avatar"
         />
         <div>
-          <h1 class="text-3xl font-bold">{{ user.name }}</h1>
+          <h1 class="text-3xl font-bold text-amber-400">{{ user.username }}</h1>
+          <p class="text-gray-600">{{ user.name }}</p>
           <p class="text-gray-600">{{ user.email }}</p>
           <p>{{ user.id }}</p>
         </div>
@@ -18,14 +19,14 @@
   <section>
     <div class="container mx-auto p-10">
       <div>
-        <h1 class="py-10 text-center md:text-5xl">User Albums</h1>
+        <h1 class="py-10 text-center md:text-5xl text-amber-400 font-bold">User Albums</h1>
       </div>
       <div class="grid grid-cols-5 gap-4 py-10"> 
         <router-link v-for="album in user.album" :key="album.id" :to="`/users/${user.id}/albums/${album.id}`">
           <AlbumCard/>
-        </router-link>   
-        
-      </div>
+          <p class="px-5 my-2 font-bold text-amber-400"> {{ album.title }}</p>
+        </router-link>
+      </div> 
     </div>
   </section>
 </template>
@@ -36,7 +37,8 @@ import { computed, defineProps, onBeforeMount } from "vue";
 import AlbumCard from "./AlbumCard.vue";
 // import { ref } from 'vue';
 
-const props = defineProps(["id"]);
+const props = defineProps(["id"],'heyyyyyy');
+console.log(props) 
 const store = useStore();
 
 const user = computed(() => store.getters.getCurrentUser);

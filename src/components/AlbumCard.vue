@@ -10,23 +10,27 @@
 
 <script setup>
 import { ref, onMounted } from "vue";
+// eslint-disable-next-line 
 import axios from "axios";
+// import { createClient } from 'pexels'
+
+// const client = createClient('Z8AvARzqQjVdThq851WGRBlMmj3fzzYX8D4c1H3pfdalmx3h2mixLWrM')
 
 const selectedImage = ref("")
 
 function fetchRandomImage() {
-  axios
-    .get("https://api.pexels.com/v1/photos/random", {
-      headers: {
-        Authorization: "YOUR_API_KEY_HERE",
-      },
-    })
-    .then((response) => {
-      selectedImage.value = response.data;
-    })
-    .catch((error) => {
-      console.error(error);
-    });
+  // axios
+  //   .get("https://api.pexels.com/v1/photos/random", {
+  //     headers: {
+  //       "Authorization": "Z8AvARzqQjVdThq851WGRBlMmj3fzzYX8D4c1H3pfdalmx3h2mixLWrM"
+  //     },
+  //   })
+  //   .then((response) => {
+  //     selectedImage.value = response.data.src.original
+  //   })
+  //   .catch((error) => {
+  //     console.error(error);
+  //   });
 }
 
 
