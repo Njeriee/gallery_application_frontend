@@ -10,7 +10,7 @@ const store = createStore({
     albums: [],
     userAlbum: [],
     currentUser: [],
-    photoDetails: [],
+    photoDetails: {},
   },
 
   // getters
@@ -40,12 +40,15 @@ const store = createStore({
     setUserAlbumPhotos(state, response) {
       state.userAlbum = response;
     },
-    setPhotoDetails(state, response) {
-      state.photoDetails = response;
+    setPhotoDetails(state, photoDetails) {
+      state.photoDetails = photoDetails;
     },
 
-    updatePhotoTitle(state, title) {
-      state.photoDetails.title = title;
+    updatePhotoTitle(state, payload) {
+      state.photoDetails.id === payload.id
+      state.photoDetails.title = payload.title;
+      
+      console.log('mutattion complete!')
     },
   },
 
@@ -100,21 +103,11 @@ const store = createStore({
     },
 
     // edit a photo title
-    updateTitle({ commit }, payload) {
-      axios
-        .put(`https://jsonplaceholder.typicode.com/photos/${payload.id}`, {
-          title: payload.title,
-        })
-        .then((response) => {
-          commit("updatePhotoTitle", {
-            id: payload.id,
-            title: response.data.title,
-          });
-        })
-        .catch((error) => {
-          console.error(error);
-        });
-    },
+    async updatePhotoDetails({ commit }, payload) {
+      commit("updatePhotoTitle", payload);
+      console.log("photo details updated")
+    }
+
   },
 
   modules: {},
