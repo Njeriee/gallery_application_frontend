@@ -1,7 +1,7 @@
 <template>
-  <div class="w-64 h-64 mx-auto bg-gray-300 rounded-lg overflow-hidden">
+  <div class="w-64 h-64 mx-auto bg-gray-300 rounded-lg overflow-hidden" v-for="image in  selectedImage" :key="image.id">
     <img
-      :src="selectedImage"
+      :src="image"
       alt="Random image"
       class="w-full h-full object-cover"
     />
@@ -16,21 +16,23 @@ import axios from "axios";
 
 // const client = createClient('Z8AvARzqQjVdThq851WGRBlMmj3fzzYX8D4c1H3pfdalmx3h2mixLWrM')
 
-const selectedImage = ref("")
+const selectedImage = ref([])
 
 function fetchRandomImage() {
-  // axios
-  //   .get("https://api.pexels.com/v1/photos/random", {
-  //     headers: {
-  //       "Authorization": "Z8AvARzqQjVdThq851WGRBlMmj3fzzYX8D4c1H3pfdalmx3h2mixLWrM"
-  //     },
-  //   })
-  //   .then((response) => {
-  //     selectedImage.value = response.data.src.original
-  //   })
-  //   .catch((error) => {
-  //     console.error(error);
-  //   });
+  axios
+    .get("https://www.pexels.com/collections/hygge-cuy17hv/", {
+      
+      headers: {
+        "Authorization": "Z8AvARzqQjVdThq851WGRBlMmj3fzzYX8D4c1H3pfdalmx3h2mixLWrM"
+      },
+      
+    })
+    .then((response) => {
+      selectedImage.value = response.data
+    })
+    .catch((error) => {
+      console.error(error);
+    });
 }
 
 
