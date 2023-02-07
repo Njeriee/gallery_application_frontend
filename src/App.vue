@@ -63,7 +63,7 @@
   </nav>
   <router-view />
   <footer class="py-4 bg-amber-500 text-white">
-    <p class="text-center">@2023</p>
+    <p class="text-center">©2023</p>
   </footer>
 </template>
 

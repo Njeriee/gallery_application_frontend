@@ -1,6 +1,6 @@
 <template>
   <section>
-    <div class="grid grid-cols-10 gap-4 p-10">
+    <div class="grid grid-cols-3 md:grid-cols-10 gap-4 p-10">
       <div v-for="photo in photos" :key="photo.id">
         <router-link :to="`/users/${user.id}/albums/${photo.albumId}/photos/${photo.id}`"><img :src="photo.url" alt="album photos" /></router-link>
       

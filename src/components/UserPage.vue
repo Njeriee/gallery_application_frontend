@@ -19,12 +19,12 @@
   <section>
     <div class="container mx-auto p-10">
       <div>
-        <h1 class="py-10 text-center md:text-5xl text-amber-400 font-bold">User Albums</h1>
+        <h1 class="py-10 text-center text-4xl md:text-5xl text-amber-400 font-bold">User Albums</h1>
       </div>
-      <div class="grid grid-cols-5 gap-4 py-10"> 
+      <div class="grid md:grid-cols-5 gap-4 py-10"> 
         <router-link v-for="album in user.album" :key="album.id" :to="`/users/${user.id}/albums/${album.id}`">
           <AlbumCard/>
-          <p class="px-5 my-2 font-bold text-amber-400"> {{ album.title }}</p>
+          <p class="px-5 my-2 font-bold text-center text-amber-400"> {{ album.title }}</p>
         </router-link>
       </div> 
     </div>
