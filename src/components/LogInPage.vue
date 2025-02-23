@@ -40,14 +40,14 @@
             class="bg-amber-500 text-white font-bold text-lg hover:bg-gray-700 p-2 mt-8"
           />
         </form>
-        <div class="text-center pt-12 pb-12">
+        <!-- <div class="text-center pt-12 pb-12">
           <p>
             Don't have an account?
             <a href="/signup" class="text-amber-500 underline font-semibold"
               >Register here.</a
             >
           </p>
-        </div>
+        </div> -->
       </div>
     </div>
 
