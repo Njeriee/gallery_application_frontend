@@ -11,7 +11,7 @@
         />
       </svg>
       <span class="font-semibold text-xl tracking-tight"
-        ><router-link to="/">View Albums App</router-link></span
+        >View Albums App</span
       >
     </div>
 
@@ -51,20 +51,21 @@
         <li
           class="mx-4 md:border-none rounded-lg bg-black px-4 py-2 text-amber-400 hover:animate-bounce"
         >
-          <router-link to="/login">sign in</router-link>
+          <router-link to="/login">log in</router-link>
         </li>
-        <li
-          class="md:border-none rounded-lg bg-black px-4 py-2 text-amber-400 hover:animate-bounce"
+        <!-- <li
+          class="md:border-none rounded-lg bg-black px-4 py-2 text-amber-400 hover:animate-bounce" 
         >
+        <button onclick="register">register</button>
           <router-link to="/signup">sign up</router-link>
-        </li>
+        </li> -->
       </span>
     </ul>
   </nav>
   <router-view />
-  <footer class="py-4 bg-amber-500 text-white">
+  <!-- <footer class="py-4 bg-amber-500 text-white">
     <p class="text-center">©2023</p>
-  </footer>
+  </footer> -->
 </template>
 
 <script setup>
@@ -81,6 +82,8 @@ const signOut = () => {
   router.push("/");
 };
 
+
+
 onBeforeMount(() => {
   getAuth().onAuthStateChanged((user) => {
     if (user) {
@@ -90,9 +93,15 @@ onBeforeMount(() => {
     }
   });
 });
+
 </script>
 
 <style>
+.section{
+  position: fixed;
+  bottom: 0;
+  right: 0;
+}
 nav {
   padding: 24px;
 }
