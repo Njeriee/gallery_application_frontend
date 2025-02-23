@@ -4,7 +4,7 @@
       <div class="flex items-center">
         <img
           class="w-48 h-48 rounded-full mr-10"
-          src="https://via.placeholder.com/150"
+          src="https://img.freepik.com/free-vector/user-follower-icons-social-media-notification-icon-speech-bubbles-vector-illustration_56104-847.jpg?t=st=1740330444~exp=1740334044~hmac=748a3bc5edd404cd69614f2c8fa04d95df56a269e1f075ddf6940eae362e55e3&w=900"
           alt="User Avatar"
         />
         <div>

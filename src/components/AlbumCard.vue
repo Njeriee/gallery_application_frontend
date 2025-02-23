@@ -2,7 +2,7 @@
   <div class="w-64 h-64 mx-auto bg-gray-300 rounded-lg overflow-hidden">
     <img
       :src="selectedImage"
-      alt="Random image"
+      alt="image from albums API"
       class="w-full h-full object-cover"
     />
   </div>

@@ -121,7 +121,7 @@
                                                 <div class="flex items-center">
                                                     <div class="flex-shrink-0 w-10 h-10">
                                                         <img class="w-10 h-10 rounded-full"
-                                                            src="https://source.unsplash.com/user/erondu"
+                                                            src="https://img.freepik.com/free-vector/blue-circle-with-white-user_78370-4707.jpg?t=st=1740329644~exp=1740333244~hmac=5960b4a79f5921ec2f70281097b274a0f122a00d25fdc8a12987ba418eb03150&w=740"
                                                             alt="admin dashboard ui">
                                                     </div>
 

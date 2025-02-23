@@ -65,18 +65,18 @@
 import { ref } from 'vue'
 import {getAuth , signInWithEmailAndPassword} from 'firebase/auth'
 import {useRouter} from 'vue-router'
-import { onBeforeMount } from '@vue/runtime-core'
+// import { onBeforeMount } from '@vue/runtime-core'
 
-let Email = ref('')
-let Password = ref('')
+const Email = ref('')
+const Password = ref('')
 const router = useRouter()
 
 
-onBeforeMount ( ()=> {
-  Email = " ";
-  Password = "";
-}
-)
+// onBeforeMount ( ()=> {
+//   Email = " ";
+//   Password = "";
+// }
+// )
 let errorMsg = ref()
 
 // login function
