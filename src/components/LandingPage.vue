@@ -10,7 +10,7 @@
               <p class="md:text-2xl text-xl pb-5 md:pb-10">
                 A simpler and faster way to access your photos
               </p>
-              <a class="inline-block px-7 py-3 mb-2 md:mb-0 md:mr-2 bg-amber-500 text-white font-medium text-sm leading-snug uppercase rounded shadow-md hover:bg-black hover:shadow-lg focus:shadow-lg focus:outline-none focus:ring-0 active:shadow-lg transition duration-150 ease-in-out" data-mdb-ripple="true" data-mdb-ripple-color="light" href="#!" role="button">Get started</a>
+              <a class="inline-block px-7 py-3 mb-2 md:mb-0 md:mr-2 bg-amber-500 text-white font-medium text-sm leading-snug uppercase rounded shadow-md hover:bg-black hover:shadow-lg focus:shadow-lg focus:outline-none focus:ring-0 active:shadow-lg transition duration-150 ease-in-out" data-mdb-ripple="true" data-mdb-ripple-color="light" href="" role="button">Get started</a>
               <a class="inline-block px-7 py-3 ml-2 bg-transparent text-amber-500 font-medium text-sm leading-snug uppercase rounded hover:text-white hover:bg-black focus:bg-gray-100 focus:outline-none focus:ring-0 active:bg-gray-200 transition duration-150 ease-in-out" data-mdb-ripple="true" data-mdb-ripple-color="light" href="/login" role="button">Log in</a>
             </div>
           </div>

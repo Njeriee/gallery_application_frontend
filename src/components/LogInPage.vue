@@ -16,7 +16,7 @@
               v-model="Email"
               type="email"
               id="email"
-              placeholder="your@email.com"
+              placeholder="use the email : test6@xyz.com"
               class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 mt-1 leading-tight focus:outline-none focus:shadow-outline"
             />
             <p class=" animate-bounce md:w-2/4 text-gray-600 my-4 p-2 text-center rounded-md bg-red-100" v-if="errorMsg == 'Invalid email' " >{{ errorMsg }}</p>
@@ -27,7 +27,7 @@
               v-model="Password"
               type="password"
               id="password"
-              placeholder="Password"
+              placeholder="the password is : 123456"
               class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 mt-1 leading-tight focus:outline-none focus:shadow-outline"
             />
             <p class="animate-bounce md:w-2/4 text-gray-600 my-2 p-2 text-center rounded-md bg-red-100" v-if="errorMsg == 'Incorrect password'" >{{ errorMsg }}</p>
@@ -65,11 +65,18 @@
 import { ref } from 'vue'
 import {getAuth , signInWithEmailAndPassword} from 'firebase/auth'
 import {useRouter} from 'vue-router'
+import { onBeforeMount } from '@vue/runtime-core'
 
-
-const Email = ref('')
-const Password = ref('')
+let Email = ref('')
+let Password = ref('')
 const router = useRouter()
+
+
+onBeforeMount ( ()=> {
+  Email = " ";
+  Password = "";
+}
+)
 let errorMsg = ref()
 
 // login function
